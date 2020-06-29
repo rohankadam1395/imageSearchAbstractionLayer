@@ -1,0 +1,47 @@
+
+
+.home{
+    display:flex;
+    flex-direction: column;
+}
+header{
+    align-self: center;
+}
+.headSearch{
+    align-self: center;
+    margin-bottom: 1em;
+}
+.searchGrid{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns:repeat(auto-fill,250px);
+    grid-template-rows:repeat(auto-fill,250px);
+    grid-gap: 1em;
+} 
+.images{
+
+    height: 100%;
+    width:100%;
+}
+
+.imagesSrc{
+    height: 100%;
+    width: 100%;
+
+}
+.inputSearchcss{
+}
+.inputSearchcssError{
+border:1px solid red;
+
+}
+.inputSearchcssError:hover{
+    box-shadow: grey 2px 2px;
+    border: 1px solid black;
+    
+    }
+    .recentSearches{
+        align-self: center;
+    }
