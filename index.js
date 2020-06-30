@@ -7,6 +7,9 @@ if(process.env.NODE_ENV!=='production'){
 const app=express();
 app.use(bodyParser.json());
 appRoutes(app);
+app.get("/data",(req,res)=>{
+    res.send("Hello");
+})
 if(process.env.NODE_ENV==='production'){
     app.use(express.static('client/build'));
 const path=require('path');
