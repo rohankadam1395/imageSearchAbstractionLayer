@@ -23,8 +23,8 @@ module.exports=function(app){
                 .then(data=>{
             //console.log(data.data.items);
                     
-         //   res.json(data.data.items);
-         res.send("Hello");
+            res.json(data.data.items);
+        // res.send("Hello");
                 }).catch(err=>{
             res.send("Error in fetching images");
                 });
@@ -39,8 +39,8 @@ module.exports=function(app){
                     console.log(err);
                 }
                 
-                //res.json(docs);
-                res.send("Hello for database");
+                res.json(docs);
+              //  res.send("Hello for database");
 
             })
 
