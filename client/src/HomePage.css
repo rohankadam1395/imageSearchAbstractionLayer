@@ -9,6 +9,8 @@ header{
 }
 .headSearch{
     align-self: center;
+    display: flex;
+    align-items: center;
     margin-bottom: 1em;
 }
 .searchGrid{
@@ -20,6 +22,24 @@ header{
     grid-template-rows:repeat(auto-fill,250px);
     grid-gap: 1em;
 } 
+.recentSearchesList{
+
+align-self: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+}
+.recentItem{
+    text-align: center;
+    line-height: 3em;
+ background-color: #eff4ff;
+    width: 50%;
+    height: 3em;
+    border: 0.5px solid black;
+    margin-top: 1%;
+   
+}
 .images{
 
     height: 100%;
@@ -32,8 +52,13 @@ header{
 
 }
 .inputSearchcss{
+    height: 2em;
+    box-shadow: grey 2px 2px;
+    margin-right: 1em;
 }
 .inputSearchcssError{
+    margin-right: 1em;
+
 border:1px solid red;
 
 }

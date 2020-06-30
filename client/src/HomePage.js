@@ -2,6 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import './HomePage.css';
 import SearchGrid from "./SearchGrid";
+import RecentSearches from './RecentSearches';
+import {IconContext} from 'react-icons';
+import {FaHistory,FaSearch} from 'react-icons/fa';
+
 class Home extends React.Component{
     constructor(props){
         super(props);
@@ -12,7 +16,7 @@ class Home extends React.Component{
             apiData:[],
             search:"",
             searchInput:"inputSearchcss",
-            recentSearch:[],
+            recentSearch:[{}],
             toggle:true
         }
     }
@@ -26,17 +30,24 @@ this.setState({
 
 
     recentSearch(){
-axios.get('/data').then(response=>{
-    console.log(response.data);
-    this.setState({
-        toggle:!this.state.toggle,
-        recentSearch:response.data
-    })
+        if(this.state.toggle){
+            axios.get('/data').then(response=>{
+                console.log(response.data);
+                this.setState({
+                    toggle:!this.state.toggle,
+                    recentSearch:response.data
+                })
+            
+            });
+        }else{
+            this.setState({
+                toggle:!this.state.toggle,
+            })
+        }
 
-});
     }
     apiCall(){
-        if(this.state.search==""){
+        if(this.state.search===""){
 this.setState({
     searchInput: "inputSearchcssError"
 })
@@ -56,6 +67,11 @@ axios.get('/api',{
 }).catch(err=>{
     console.log(err);
 });
+
+
+axios.post('/data',{searchQuery:this.state.search}).then(response=>{
+    console.log(response);
+});
         }
     }
     render(){
@@ -63,16 +79,10 @@ axios.get('/api',{
 <header><h2>Image Search Component</h2></header>
 <div className="headSearch">
 <input type="text" className={this.state.searchInput} value={this.state.search} onChange={this.searchTextChange}></input>
-<button onClick={this.apiCall}>Click Here</button>
+<IconContext.Provider value={{style:{fontSize:'30px'}}}><FaSearch onClick={this.apiCall}></FaSearch></IconContext.Provider>
 </div>
-<p className="recentSearches"><a href="#" onClick={this.recentSearch}>Recent Searches</a></p>
-{this.state.toggle ?<SearchGrid apiData={this.state.apiData}/> :<div>
-        <ul>
-        {this.state.recentSearch.map((data,index)=>{
-            return <li key={index}>{data}</li>
-        })}
-        </ul>
-        </div>  }
+<div className="recentSearches"><IconContext.Provider value={{style:{fontSize:'30px'}}}><FaHistory onClick={this.recentSearch}></FaHistory></IconContext.Provider></div>
+{this.state.toggle ?<SearchGrid apiData={this.state.apiData}/> :<RecentSearches recentSearch={this.state.recentSearch}/>  }
     
     
 
