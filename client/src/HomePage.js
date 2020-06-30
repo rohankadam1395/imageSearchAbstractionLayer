@@ -32,6 +32,7 @@ this.setState({
     recentSearch(){
         if(this.state.toggle){
             axios.get('/data').then(response=>{
+                console.log("Getting the below data from database");
                 console.log(response.data);
                 this.setState({
                     toggle:!this.state.toggle,
@@ -59,6 +60,7 @@ axios.get('/api',{
         "search":this.state.search
     }
 }).then(response=>{
+    console.log("Got the response from google");
     console.log(response);
     this.setState({
         toggle:true,
@@ -70,6 +72,7 @@ axios.get('/api',{
 
 
 axios.post('/data',{searchQuery:this.state.search}).then(response=>{
+    console.log("Sending to server the search data and then getting a success message");
     console.log(response);
 });
         }
