@@ -22,7 +22,8 @@ module.exports=function(app){
                 axios.get(reqPath)
                 .then(data=>{
             //console.log(data.data.items);
-            res.send(data.data.items);
+                    
+            res.json(data.data.items);
                 }).catch(err=>{
             res.send("Error in fetching images");
                 });
@@ -36,7 +37,7 @@ module.exports=function(app){
                 if(err){
                     console.log(err);
                 }
-                res.send(docs);
+                res.json(docs);
 
             })
 
