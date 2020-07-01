@@ -20,9 +20,7 @@ module.exports=function(app){
             
                 var reqPath=`https://www.googleapis.com/customsearch/v1?key=${process.env.key}&cx=${process.env.cx}&q=${search}&searchType=image&imgType=photo`;
                 axios.get(reqPath)
-                .then(data=>{
-            //console.log(data.data.items);
-                    
+                .then(data=>{                    
             res.json(data.data.items);
         // res.send("Hello");
                 }).catch(err=>{
